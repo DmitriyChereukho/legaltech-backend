@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
-import ru.hse.legaltech.backend.entity.Company
+import ru.hse.legaltech.backend.model.CompanyDto
 import ru.hse.legaltech.backend.service.CompanyService
 
 @RestController
@@ -14,5 +14,5 @@ class CompanyController(
 ) {
     @GetMapping
     @ResponseBody
-    fun getAllCompanies(): List<Company> = companyService.getAllCompanies()
+    fun getAllCompanies(): List<CompanyDto> = companyService.getAllCompanies()
 }

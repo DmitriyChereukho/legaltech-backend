@@ -4,6 +4,8 @@ plugins {
     id("org.springframework.boot") version "3.4.1"
     id("io.spring.dependency-management") version "1.1.7"
     kotlin("plugin.jpa") version "1.9.25"
+    kotlin("plugin.lombok") version "2.1.10"
+    id("io.freefair.lombok") version "8.10"
 }
 
 group = "ru.hse"
