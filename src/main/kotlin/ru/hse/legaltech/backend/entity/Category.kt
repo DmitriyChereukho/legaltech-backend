@@ -6,16 +6,16 @@ import jakarta.persistence.Id
 import jakarta.persistence.Table
 import lombok.Builder
 import lombok.Data
-import java.util.*
 
 @Entity
 @Data
-@Table(name = "requests")
+@Table(name = "categories")
 @Builder
-class Request(
+class Category (
     @Id
     @Column(name = "id")
-    private val id: UUID,
+    private val id: Int,
 
-    private val description: String
+    @Column(name = "name")
+    val name: String
 )

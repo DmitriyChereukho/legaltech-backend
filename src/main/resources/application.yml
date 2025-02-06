@@ -1,1 +1,16 @@
-spring.application.name=legaltech-backend
+spring:
+  application:
+    name: legaltech-backend
+
+  main:
+    banner-mode: off
+
+  security:
+    user:
+      name: holger
+      password: QU11OWIz
+
+  datasource:
+    url: jdbc:postgresql://c-c9q9gccnphui1r4shhjl.rw.mdb.yandexcloud.net:6432/db-legaltechmap?targetServerType=master&ssl=false&sslmode=disable
+    username: legalholger
+    password: tzi-tzi-yaku
