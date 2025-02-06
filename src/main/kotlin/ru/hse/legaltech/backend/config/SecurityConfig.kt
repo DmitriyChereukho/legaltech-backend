@@ -14,12 +14,11 @@ class SecurityConfig {
     @Bean
     @Throws(Exception::class)
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
-        http.authorizeHttpRequests({ auth ->
+        http.authorizeHttpRequests { auth ->
             auth
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .anyRequest().authenticated()
-        }
-        ).httpBasic { }
+        }.httpBasic { }
 
         return http.build()
     }
