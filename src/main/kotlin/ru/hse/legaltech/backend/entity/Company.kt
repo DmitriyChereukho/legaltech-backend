@@ -4,10 +4,11 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "companies")
-class Company(
+data class Company(
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    val id: Int,
+    val id: Int? = null,
 
     @Column(name = "name")
     val name: String,
@@ -32,5 +33,9 @@ class Company(
     val founder: String,
 
     @Column(name = "additional_info")
-    val additionalInfo: String
+    val additionalInfo: String,
+
+    @OneToOne
+    @JoinColumn(name = "image_id")
+    val image: CompanyImage
 )

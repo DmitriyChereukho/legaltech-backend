@@ -12,7 +12,8 @@ class CompanyEntityToCompanyDtoMapper {
                 company.description,
                 company.category,
                 company.yearOfLaunch,
-                company.linkToProject
+                company.linkToProject,
+                company.image.path
             )
         }
     }

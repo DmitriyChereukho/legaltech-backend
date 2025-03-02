@@ -5,6 +5,10 @@ spring:
   main:
     banner-mode: off
 
+  web:
+    resources:
+      static-locations: file:uploads/
+
   security:
     user:
       name: holger

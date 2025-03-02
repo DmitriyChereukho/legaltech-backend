@@ -6,3 +6,12 @@ databaseChangeLog:
   - include:
       file: companies.sql
       relativeToChangelogFile: true
+  - include:
+      file: insert_companies_1.sql
+      relativeToChangelogFile: true
+  - include:
+      file: insert_companies_2.sql
+      relativeToChangelogFile: true
+  - include:
+      file: insert_companies_3.sql
+      relativeToChangelogFile: true

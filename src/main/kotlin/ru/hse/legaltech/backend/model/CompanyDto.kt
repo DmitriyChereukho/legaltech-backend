@@ -3,7 +3,7 @@ package ru.hse.legaltech.backend.model
 import ru.hse.legaltech.backend.entity.Category
 
 data class CompanyDto(
-    val id: Int,
+    val id: Int?,
 
     val name: String,
 
@@ -14,4 +14,6 @@ data class CompanyDto(
     val yearOfLaunch: Int,
 
     val linkToProject: String,
+
+    val imagePath: String
 )
