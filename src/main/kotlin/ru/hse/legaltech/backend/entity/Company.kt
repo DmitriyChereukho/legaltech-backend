@@ -14,28 +14,31 @@ data class Company(
     val name: String,
 
     @Column(name = "description")
-    val description: String,
+    val description: String?,
 
     @ManyToOne
     @JoinColumn(name = "category_id")
     val category: Category,
 
     @Column(name = "year_of_launch")
-    val yearOfLaunch: Int,
+    val yearOfLaunch: Int?,
 
     @Column(name = "linkToProject")
-    val linkToProject: String,
+    val linkToProject: String?,
 
     @Column(name = "contacts")
-    val contacts: String,
+    val contacts: String?,
 
     @Column(name = "founder")
-    val founder: String,
+    val founder: String?,
 
     @Column(name = "additional_info")
-    val additionalInfo: String,
+    val additionalInfo: String?,
 
-    @OneToOne
+    /*@OneToOne
     @JoinColumn(name = "image_id")
-    val image: CompanyImage
+    val image: CompanyImage*/
+
+    @Column(name = "image_file_name")
+    val imageFileName: String?
 )

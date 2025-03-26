@@ -10,7 +10,7 @@ import jakarta.persistence.Table
 data class Category (
     @Id
     @Column(name = "id")
-    private val id: Int,
+    val id: Int,
 
     @Column(name = "name")
     val name: String

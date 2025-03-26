@@ -10,8 +10,8 @@ import ru.hse.legaltech.backend.service.CompanyImageService
 class CompanyImageController(
     private val companyImageService: CompanyImageService
 ) {
-    @PostMapping("/upload")
-    fun uploadImage(@RequestParam("file") file: MultipartFile, @RequestBody companyId: Int): ResponseEntity<String> {
-        return ResponseEntity.ok(companyImageService.saveImage(file, companyId))
+    @PostMapping
+    fun uploadImage(@RequestParam("image") file: MultipartFile): ResponseEntity<String> {
+        return ResponseEntity.ok(companyImageService.saveImage(file))
     }
 }

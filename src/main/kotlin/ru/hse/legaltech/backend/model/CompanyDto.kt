@@ -7,13 +7,15 @@ data class CompanyDto(
 
     val name: String,
 
-    val description: String,
+    val description: String?,
 
     val category: Category,
 
-    val yearOfLaunch: Int,
+    val yearOfLaunch: Int?,
 
-    val linkToProject: String,
+    val linkToProject: String?,
 
-    val imagePath: String
+    val additionalInfo: String?,
+
+    val imagePath: String?
 )

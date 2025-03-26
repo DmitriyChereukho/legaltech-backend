@@ -9,4 +9,8 @@ class CategoryService(
     private val categoryRepository: CategoryRepository
 ) {
     fun getAllCategories(): List<Category> = categoryRepository.findAll()
+
+    fun getCategoryById(id: Int): Category {
+        return categoryRepository.findById(id).get()
+    }
 }

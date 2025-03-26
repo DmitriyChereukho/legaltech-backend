@@ -21,3 +21,33 @@ databaseChangeLog:
   - include:
       file: alter_table_compamies_add_image_id_column.sql
       relativeToChangelogFile: true
+  - include:
+      file: alter_table_companies_remove_image_add_image_file_name.sql
+      relativeToChangelogFile: true
+  - include:
+      file: insert_companies_4.sql
+      relativeToChangelogFile: true
+  - include:
+      file: insert_file_names.sql
+      relativeToChangelogFile: true
+  - include:
+      file: insert_file_names_2.sql
+      relativeToChangelogFile: true
+  - include:
+      file: alter_table_companies_rm_empty_additional_info.sql
+      relativeToChangelogFile: true
+  - include:
+      file: requests.sql
+      relativeToChangelogFile: true
+  - include:
+      file: requests_test.sql
+      relativeToChangelogFile: true
+  - include:
+      file: insert_companies_5.sql
+      relativeToChangelogFile: true
+  - include:
+      file: alter_table_companies_remove_not_null.sql
+      relativeToChangelogFile: true
+  - include:
+      file: insert_companies_6.sql
+      relativeToChangelogFile: true
