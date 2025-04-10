@@ -13,8 +13,10 @@ class CompanyEntityToCompanyDtoMapper {
                 company.category,
                 company.yearOfLaunch,
                 company.linkToProject,
+                company.contacts,
+                company.founder,
                 company.additionalInfo,
-                company.imageFileName
+                company.imageFileName ?: "legal-logo.png"
             )
         }
     }

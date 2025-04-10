@@ -1,5 +1,6 @@
 package ru.hse.legaltech.backend.mapper
 
+import ru.hse.legaltech.backend.entity.CompanyUpdateRequest
 import ru.hse.legaltech.backend.entity.Request
 import ru.hse.legaltech.backend.model.RequestDto
 
@@ -14,9 +15,24 @@ class RequestEntityToRequestDtoMapper {
                 request.yearOfLaunch,
                 request.linkToProject,
                 request.additionalInfo,
-                request.imageFileName,
+                request.imageFileName ?: "legal-logo.png",
                 request.createdAt,
                 request.status
+            )
+        }
+
+        fun toRequestDto(companyUpdateRequest: CompanyUpdateRequest) : RequestDto {
+            return RequestDto(
+                companyUpdateRequest.id,
+                companyUpdateRequest.name,
+                companyUpdateRequest.description,
+                companyUpdateRequest.category,
+                companyUpdateRequest.yearOfLaunch,
+                companyUpdateRequest.linkToProject,
+                companyUpdateRequest.additionalInfo,
+                companyUpdateRequest.imageFileName ?: "legal-logo.png",
+                companyUpdateRequest.createdAt,
+                companyUpdateRequest.status
             )
         }
     }
