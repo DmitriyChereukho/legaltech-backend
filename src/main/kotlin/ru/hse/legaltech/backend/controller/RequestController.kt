@@ -1,9 +1,6 @@
 package ru.hse.legaltech.backend.controller
 
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import org.springframework.web.multipart.MultipartFile
-import ru.hse.legaltech.backend.entity.Request
 import ru.hse.legaltech.backend.model.NewRequestDto
 import ru.hse.legaltech.backend.model.RequestDto
 import ru.hse.legaltech.backend.model.UpdateRequestDto
@@ -13,8 +10,7 @@ import ru.hse.legaltech.backend.service.RequestService
 @RestController
 @RequestMapping("/requests")
 class RequestController(
-    private val requestService: RequestService,
-    private val companyImageService: CompanyImageService
+    private val requestService: RequestService
 ) {
 
     @GetMapping
