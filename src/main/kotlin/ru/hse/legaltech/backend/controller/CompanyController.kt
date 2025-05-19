@@ -1,10 +1,9 @@
 package ru.hse.legaltech.backend.controller
 
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.ResponseBody
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import ru.hse.legaltech.backend.model.CompanyDto
+import ru.hse.legaltech.backend.model.NewRequestDto
+import ru.hse.legaltech.backend.model.UpdateRequestDto
 import ru.hse.legaltech.backend.service.CompanyService
 
 @RestController
@@ -15,4 +14,16 @@ class CompanyController(
     @GetMapping
     @ResponseBody
     fun getAllCompanies(): List<CompanyDto> = companyService.getAllCompanies()
+
+    @DeleteMapping
+    @ResponseBody
+    fun deleteCompany(@RequestBody id: Int): CompanyDto = companyService.deleteCompany(id)
+
+    @PostMapping
+    @ResponseBody
+    fun addCompany(@RequestBody newRequestDto: NewRequestDto): CompanyDto = companyService.createCompany(newRequestDto)
+
+    @PutMapping
+    @ResponseBody
+    fun updateCompany(@RequestBody updateRequestDto: UpdateRequestDto): CompanyDto = companyService.updateCompany(updateRequestDto)
 }
