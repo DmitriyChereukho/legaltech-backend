@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.*
 import ru.hse.legaltech.backend.model.NewRequestDto
 import ru.hse.legaltech.backend.model.RequestDto
 import ru.hse.legaltech.backend.model.UpdateRequestDto
-import ru.hse.legaltech.backend.service.CompanyImageService
 import ru.hse.legaltech.backend.service.RequestService
 
 @RestController
