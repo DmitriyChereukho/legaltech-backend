@@ -1,6 +1,5 @@
 package ru.hse.legaltech.backend.service
 
-import org.springframework.data.jpa.domain.AbstractPersistable_.id
 import org.springframework.stereotype.Service
 import ru.hse.legaltech.backend.entity.Company
 import ru.hse.legaltech.backend.mapper.CompanyEntityToCompanyDtoMapper

@@ -23,12 +23,6 @@ class RequestController(
         return requestService.getRequests()
     }
 
-    @PutMapping
-    @ResponseBody
-    fun getRequestsPut(): List<RequestDto> {
-        return requestService.getRequests()
-    }
-
     @PostMapping
     fun addRequest(@RequestBody request: NewRequestDto) {
         requestService.addRequest(request)
