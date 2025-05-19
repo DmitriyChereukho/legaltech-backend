@@ -17,8 +17,11 @@ class SecurityConfig {
         http
             .authorizeHttpRequests { auth ->
                 auth
-                    .requestMatchers("/requests").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/requests").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/requests/update").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/requests").authenticated()
                     .requestMatchers(HttpMethod.GET).permitAll()
+                    .requestMatchers(HttpMethod.OPTIONS).permitAll()
                     .anyRequest().authenticated()
             }
             .httpBasic { }
