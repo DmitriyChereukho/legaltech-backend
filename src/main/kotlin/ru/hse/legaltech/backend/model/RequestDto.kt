@@ -2,6 +2,7 @@ package ru.hse.legaltech.backend.model
 
 import ru.hse.legaltech.backend.entity.Category
 import ru.hse.legaltech.backend.enum.RequestStatus
+import ru.hse.legaltech.backend.enum.RequestType
 import java.time.LocalDateTime
 
 data class RequestDto(
@@ -23,5 +24,7 @@ data class RequestDto(
 
     val createdAt: LocalDateTime,
 
-    val status: RequestStatus
+    val status: RequestStatus,
+
+    val requestType: RequestType
 )

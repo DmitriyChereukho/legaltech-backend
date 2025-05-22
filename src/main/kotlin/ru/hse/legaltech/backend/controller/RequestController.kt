@@ -3,6 +3,7 @@ package ru.hse.legaltech.backend.controller
 import org.springframework.web.bind.annotation.*
 import ru.hse.legaltech.backend.model.NewRequestDto
 import ru.hse.legaltech.backend.model.RequestDto
+import ru.hse.legaltech.backend.model.UpdateForRequestDto
 import ru.hse.legaltech.backend.model.UpdateRequestDto
 import ru.hse.legaltech.backend.service.RequestService
 
@@ -29,8 +30,13 @@ class RequestController(
     }
 
     @PostMapping("/update/accept")
-    fun acceptUpdateRequest(@RequestBody request: NewRequestDto) {
-        requestService.addRequest(request)
+    fun acceptUpdateRequest(@RequestBody requestId: Int) {
+        requestService.acceptUpdateRequest(requestId)
+    }
+
+    @PostMapping("/update/reject")
+    fun rejectUpdateRequest(@RequestBody requestId: Int) {
+        requestService.rejectUpdateRequest(requestId)
     }
 
     @PostMapping("/accept")
@@ -41,5 +47,15 @@ class RequestController(
     @PostMapping("/reject")
     fun rejectRequest(@RequestBody requestId: Int) {
         requestService.rejectRequest(requestId)
+    }
+
+    @PutMapping
+    fun updateRequestOfUpdateType(@RequestBody dto: UpdateForRequestDto) {
+        requestService.updateRequestOfTypeUpdate(dto)
+    }
+
+    @PutMapping("/update")
+    fun updateRequest(@RequestBody dto: UpdateForRequestDto){
+        requestService.updateRequest(dto)
     }
 }
