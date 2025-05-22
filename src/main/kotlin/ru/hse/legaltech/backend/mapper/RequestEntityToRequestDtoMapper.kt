@@ -4,7 +4,6 @@ import ru.hse.legaltech.backend.entity.CompanyUpdateRequest
 import ru.hse.legaltech.backend.entity.Request
 import ru.hse.legaltech.backend.enum.RequestType
 import ru.hse.legaltech.backend.model.RequestDto
-import ru.hse.legaltech.backend.model.UpdateRequestDto
 
 class RequestEntityToRequestDtoMapper {
     companion object {

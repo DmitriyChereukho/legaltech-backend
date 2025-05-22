@@ -1,6 +1,5 @@
 package ru.hse.legaltech.backend.service
 
-import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
