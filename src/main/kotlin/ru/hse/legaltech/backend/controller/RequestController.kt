@@ -1,10 +1,7 @@
 package ru.hse.legaltech.backend.controller
 
 import org.springframework.web.bind.annotation.*
-import ru.hse.legaltech.backend.model.NewRequestDto
-import ru.hse.legaltech.backend.model.RequestDto
-import ru.hse.legaltech.backend.model.UpdateForRequestDto
-import ru.hse.legaltech.backend.model.UpdateRequestDto
+import ru.hse.legaltech.backend.model.*
 import ru.hse.legaltech.backend.service.RequestService
 
 @RestController
@@ -30,13 +27,13 @@ class RequestController(
     }
 
     @PostMapping("/accept")
-    fun acceptRequest(@RequestBody requestId: Int) {
-        requestService.acceptRequest(requestId)
+    fun acceptRequest(@RequestBody idDto: IdDto) {
+        requestService.acceptRequest(idDto.id)
     }
 
     @PostMapping("/reject")
-    fun rejectRequest(@RequestBody requestId: Int) {
-        requestService.rejectRequest(requestId)
+    fun rejectRequest(@RequestBody idDto: IdDto) {
+        requestService.rejectRequest(idDto.id)
     }
 
     @PutMapping
@@ -45,7 +42,7 @@ class RequestController(
     }
 
     @DeleteMapping
-    fun deleteRequest(@RequestBody requestId: Int) {
-        requestService.deleteRequest(requestId)
+    fun deleteRequest(@RequestBody idDto: IdDto) {
+        requestService.deleteRequest(idDto.id)
     }
 }

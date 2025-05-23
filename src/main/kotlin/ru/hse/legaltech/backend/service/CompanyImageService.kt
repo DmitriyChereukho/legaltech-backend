@@ -9,8 +9,9 @@ import java.nio.file.Paths
 @Service
 class CompanyImageService {
 
+    private val uploadDirectory = "/mnt/uploads"
+
     fun saveImage(file: MultipartFile): String {
-        val uploadDirectory = "/mnt/uploads"
         val targetLocation: Path = Paths.get(uploadDirectory, file.originalFilename!!)
 
         if (Files.exists(targetLocation)) {
@@ -22,5 +23,15 @@ class CompanyImageService {
         }
 
         return file.originalFilename!!
+    }
+
+    fun deleteImage(fileName: String): Boolean {
+        val targetLocation: Path = Paths.get(uploadDirectory, fileName)
+
+        return try {
+            Files.deleteIfExists(targetLocation)
+        } catch (_: Exception){
+            false
+        }
     }
 }

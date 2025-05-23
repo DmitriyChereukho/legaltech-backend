@@ -14,9 +14,10 @@ import ru.hse.legaltech.backend.repository.CompanyRepository
 @Service
 class CompanyService(
     private val companyRepository: CompanyRepository,
-    private val categoryService: CategoryService
+    private val categoryService: CategoryService,
+    private val companyImageService: CompanyImageService,
 
-) {
+    ) {
     fun getAllCompanies(): List<CompanyDto> = companyRepository.findAll()
         .stream()
         .map { company -> CompanyEntityToCompanyDtoMapper.toCompanyDto(company) }
@@ -33,6 +34,12 @@ class CompanyService(
             throw ResponseStatusException(HttpStatus.NOT_FOUND, "Company with id $id not found")
         }
         companyRepository.deleteById(id)
+
+        val imageFileName = deletedCompany.get().imageFileName
+
+        if (!imageFileName.isNullOrEmpty()) {
+            companyImageService.deleteImage(imageFileName)
+        }
 
         return CompanyEntityToCompanyDtoMapper.toCompanyDto(deletedCompany.get())
     }
@@ -78,7 +85,6 @@ class CompanyService(
                 "Company with id ${updateRequestDto.companyId} not found"
             )
         }
-
 
 
         val notNullCompany = company.get()
