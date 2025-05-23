@@ -7,9 +7,11 @@ import jakarta.servlet.http.HttpServletResponse
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.stereotype.Component
 import org.springframework.web.filter.OncePerRequestFilter
 import ru.hse.legaltech.backend.config.AuthProperties
 
+@Component
 class JwtFilter(private val authProperties: AuthProperties) : OncePerRequestFilter() {
 
     override fun doFilterInternal(

@@ -6,17 +6,19 @@ import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import ru.hse.legaltech.backend.jwt.JwtFilter
 
 
 @Configuration
 @EnableWebSecurity
 class SecurityConfig {
-
     @Bean
-    fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
+    fun securityFilterChain(http: HttpSecurity, jwtFilter: JwtFilter): SecurityFilterChain {
         http
-            .authorizeHttpRequests { auth ->
-                auth
+            .csrf { it.disable() }
+            .authorizeHttpRequests {
+                it.requestMatchers("/auth/login").permitAll()
                     .requestMatchers(HttpMethod.POST, "/requests").permitAll()
                     .requestMatchers(HttpMethod.POST, "/requests/update").permitAll()
                     .requestMatchers(HttpMethod.GET, "/requests").authenticated()
@@ -24,8 +26,7 @@ class SecurityConfig {
                     .requestMatchers(HttpMethod.OPTIONS).permitAll()
                     .anyRequest().authenticated()
             }
-            .httpBasic { }
-            .csrf { it.disable() }
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter::class.java)
 
         return http.build()
     }
