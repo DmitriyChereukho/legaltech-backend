@@ -29,16 +29,6 @@ class RequestController(
         requestService.addUpdateRequest(request)
     }
 
-    @PostMapping("/update/accept")
-    fun acceptUpdateRequest(@RequestBody requestId: Int) {
-        requestService.acceptUpdateRequest(requestId)
-    }
-
-    @PostMapping("/update/reject")
-    fun rejectUpdateRequest(@RequestBody requestId: Int) {
-        requestService.rejectUpdateRequest(requestId)
-    }
-
     @PostMapping("/accept")
     fun acceptRequest(@RequestBody requestId: Int) {
         requestService.acceptRequest(requestId)
@@ -47,11 +37,6 @@ class RequestController(
     @PostMapping("/reject")
     fun rejectRequest(@RequestBody requestId: Int) {
         requestService.rejectRequest(requestId)
-    }
-
-    @PutMapping("/update")
-    fun updateRequestOfUpdateType(@RequestBody dto: UpdateForRequestDto) {
-        requestService.updateRequestOfTypeUpdate(dto)
     }
 
     @PutMapping

@@ -21,6 +21,10 @@ data class Request(
     @Column(name = "name")
     val name: String,
 
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "company_id")
+    val company: Company?,
+
     @Column(name = "description")
     val description: String,
 
