@@ -1,7 +1,10 @@
 package ru.hse.legaltech.backend.service
 
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
+import org.springframework.web.server.ResponseStatusException
 import ru.hse.legaltech.backend.entity.Company
+import ru.hse.legaltech.backend.entity.Request
 import ru.hse.legaltech.backend.mapper.CompanyEntityToCompanyDtoMapper
 import ru.hse.legaltech.backend.model.CompanyDto
 import ru.hse.legaltech.backend.model.NewRequestDto
@@ -27,7 +30,7 @@ class CompanyService(
         val deletedCompany = companyRepository.findById(id)
 
         if (deletedCompany.isEmpty) {
-            throw RuntimeException("Company with id $id not found")
+            throw ResponseStatusException(HttpStatus.NOT_FOUND, "Company with id $id not found")
         }
         companyRepository.deleteById(id)
 
@@ -41,8 +44,11 @@ class CompanyService(
             .filter { company -> company.name == newRequestDto.name }
             .count()
 
-        if(matchedCompanies > 0) {
-            throw RuntimeException("Company with name ${newRequestDto.name} already exists")
+        if (matchedCompanies > 0) {
+            throw ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "Company with name ${newRequestDto.name} already exists"
+            )
         }
 
         val company = companyRepository.save(
@@ -66,8 +72,11 @@ class CompanyService(
     fun updateCompany(updateRequestDto: UpdateRequestDto): CompanyDto {
         val company = companyRepository.findById(updateRequestDto.companyId)
 
-        if(company.isEmpty){
-            throw RuntimeException("Company with id ${updateRequestDto.companyId} not found")
+        if (company.isEmpty) {
+            throw ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "Company with id ${updateRequestDto.companyId} not found"
+            )
         }
 
         val notNullCompany = company.get()
@@ -88,5 +97,22 @@ class CompanyService(
         )
 
         return CompanyEntityToCompanyDtoMapper.toCompanyDto(updatedCompany)
+    }
+
+    fun createCompany(request: Request) {
+        companyRepository.save(
+            Company(
+                null,
+                request.name,
+                request.description,
+                request.category,
+                request.yearOfLaunch,
+                request.linkToProject,
+                request.contacts,
+                request.founder,
+                request.additionalInfo,
+                request.imageFileName
+            )
+        )
     }
 }

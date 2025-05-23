@@ -79,35 +79,9 @@ class RequestService(
         val notNullRequest = request.get()
 
         if (notNullRequest.company == null) {
-            companyRepository.save(
-                Company(
-                    null,
-                    notNullRequest.name,
-                    notNullRequest.description,
-                    notNullRequest.category,
-                    notNullRequest.yearOfLaunch,
-                    notNullRequest.linkToProject,
-                    notNullRequest.contacts,
-                    notNullRequest.founder,
-                    notNullRequest.additionalInfo,
-                    notNullRequest.imageFileName
-                )
-            )
+            companyService.createCompany(notNullRequest)
         } else {
-            companyRepository.save(
-                Company(
-                    notNullRequest.company!!.id,
-                    notNullRequest.name,
-                    notNullRequest.description,
-                    notNullRequest.category,
-                    notNullRequest.yearOfLaunch,
-                    notNullRequest.linkToProject,
-                    notNullRequest.contacts,
-                    notNullRequest.founder,
-                    notNullRequest.additionalInfo,
-                    notNullRequest.imageFileName
-                )
-            )
+            companyService.updateCompany(RequestEntityToRequestDtoMapper.toUpdateRequestDto(notNullRequest))
         }
         requestRepository.save(
             notNullRequest.copy(
@@ -151,5 +125,9 @@ class RequestService(
         )
 
         requestRepository.save(updatedRequest)
+    }
+
+    fun deleteRequest(requestId: Int) {
+        requestRepository.deleteById(requestId)
     }
 }

@@ -4,6 +4,7 @@ import ru.hse.legaltech.backend.entity.CompanyUpdateRequest
 import ru.hse.legaltech.backend.entity.Request
 import ru.hse.legaltech.backend.enum.RequestType
 import ru.hse.legaltech.backend.model.RequestDto
+import ru.hse.legaltech.backend.model.UpdateRequestDto
 
 class RequestEntityToRequestDtoMapper {
     companion object {
@@ -25,21 +26,18 @@ class RequestEntityToRequestDtoMapper {
             )
         }
 
-        fun toRequestDto(companyUpdateRequest: CompanyUpdateRequest): RequestDto {
-            return RequestDto(
-                companyUpdateRequest.id,
-                companyUpdateRequest.name,
-                companyUpdateRequest.description,
-                companyUpdateRequest.category,
-                companyUpdateRequest.yearOfLaunch,
-                companyUpdateRequest.linkToProject,
-                companyUpdateRequest.additionalInfo,
-                companyUpdateRequest.founder,
-                companyUpdateRequest.contacts,
-                companyUpdateRequest.imageFileName ?: "legal-logo.png",
-                companyUpdateRequest.createdAt,
-                companyUpdateRequest.status,
-                RequestType.UPDATE
+        fun toUpdateRequestDto(request: Request): UpdateRequestDto {
+            return UpdateRequestDto(
+                request.company!!.id!!,
+                request.name,
+                request.description,
+                request.category.id,
+                request.yearOfLaunch,
+                request.linkToProject,
+                request.additionalInfo,
+                request.founder,
+                request.contacts,
+                request.imageFileName ?: "legal-logo.png"
             )
         }
     }

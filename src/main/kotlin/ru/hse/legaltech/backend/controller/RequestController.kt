@@ -43,4 +43,9 @@ class RequestController(
     fun updateRequest(@RequestBody dto: UpdateForRequestDto){
         requestService.updateRequest(dto)
     }
+
+    @DeleteMapping
+    fun deleteRequest(@RequestBody requestId: Int) {
+        requestService.deleteRequest(requestId)
+    }
 }

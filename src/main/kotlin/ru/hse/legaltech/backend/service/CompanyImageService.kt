@@ -13,12 +13,10 @@ class CompanyImageService {
         val uploadDirectory = "/mnt/uploads"
         val targetLocation: Path = Paths.get(uploadDirectory, file.originalFilename!!)
 
-        // Проверяем, существует ли файл
         if (Files.exists(targetLocation)) {
-            return file.originalFilename!! // Файл уже существует, ничего не делаем
+            return file.originalFilename!!
         }
 
-        // Если файл не существует, сохраняем его
         file.inputStream.use { inputStream ->
             Files.copy(inputStream, targetLocation)
         }
