@@ -1,6 +1,5 @@
 package ru.hse.legaltech.backend.mapper
 
-import ru.hse.legaltech.backend.entity.CompanyUpdateRequest
 import ru.hse.legaltech.backend.entity.Request
 import ru.hse.legaltech.backend.enum.RequestType
 import ru.hse.legaltech.backend.model.RequestDto
@@ -22,7 +21,7 @@ class RequestEntityToRequestDtoMapper {
                 request.imageFileName ?: "legal-logo.png",
                 request.createdAt,
                 request.status,
-                RequestType.CREATE
+                if (request.company == null) RequestType.CREATE else RequestType.UPDATE
             )
         }
 
