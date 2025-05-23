@@ -49,12 +49,12 @@ class RequestController(
         requestService.rejectRequest(requestId)
     }
 
-    @PutMapping
+    @PutMapping("/update")
     fun updateRequestOfUpdateType(@RequestBody dto: UpdateForRequestDto) {
         requestService.updateRequestOfTypeUpdate(dto)
     }
 
-    @PutMapping("/update")
+    @PutMapping
     fun updateRequest(@RequestBody dto: UpdateForRequestDto){
         requestService.updateRequest(dto)
     }

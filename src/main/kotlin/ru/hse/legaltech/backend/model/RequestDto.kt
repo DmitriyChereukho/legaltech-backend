@@ -20,6 +20,10 @@ data class RequestDto(
 
     val additionalInfo: String?,
 
+    val founder: String?,
+
+    val contacts: String?,
+
     val imagePath: String?,
 
     val createdAt: LocalDateTime,
