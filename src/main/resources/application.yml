@@ -9,12 +9,14 @@ spring:
     resources:
       static-locations: file:uploads/
 
-  security:
-    user:
-      name: ${SPRING_SECURITY_USER_NAME}
-      password: ${SPRING_SECURITY_USER_PASSWORD}
-
   datasource:
     url: jdbc:postgresql://c-c9q9gccnphui1r4shhjl.rw.mdb.yandexcloud.net:6432/db-legaltechmap?targetServerType=master&ssl=false&sslmode=disable
-    username: legalholger
-    password: tzi-tzi-yaku
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+auth:
+  admin:
+    username: ${USERNAME}
+    password: ${PASSWORD}
+  jwt:
+    secret: ${JWT_SECRET_KEY}

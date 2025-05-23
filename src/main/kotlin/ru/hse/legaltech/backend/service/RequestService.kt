@@ -85,6 +85,8 @@ class RequestService(
                 status = RequestStatus.ACCEPTED
             )
         )
+
+        requestRepository.deleteById(requestId)
     }
 
     fun rejectRequest(requestId: Int) {
