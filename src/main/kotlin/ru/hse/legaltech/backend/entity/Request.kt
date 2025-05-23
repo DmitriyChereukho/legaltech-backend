@@ -6,7 +6,6 @@ import lombok.Data
 import org.hibernate.annotations.CreationTimestamp
 import ru.hse.legaltech.backend.enum.RequestStatus
 import java.time.LocalDateTime
-import java.util.*
 
 @Entity
 @Data
