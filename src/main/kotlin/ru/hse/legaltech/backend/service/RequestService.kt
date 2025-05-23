@@ -3,7 +3,6 @@ package ru.hse.legaltech.backend.service
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
-import ru.hse.legaltech.backend.entity.Company
 import ru.hse.legaltech.backend.entity.Request
 import ru.hse.legaltech.backend.enum.RequestStatus
 import ru.hse.legaltech.backend.mapper.RequestEntityToRequestDtoMapper
@@ -19,8 +18,7 @@ import java.time.LocalDateTime
 class RequestService(
     private val requestRepository: RequestRepository,
     private val categoryService: CategoryService,
-    private val companyService: CompanyService,
-    private val companyRepository: CompanyRepository
+    private val companyService: CompanyService
 ) {
     fun getRequests(): List<RequestDto> {
         return requestRepository.findAll().stream()
