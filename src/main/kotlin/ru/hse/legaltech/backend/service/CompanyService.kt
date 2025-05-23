@@ -10,6 +10,7 @@ import ru.hse.legaltech.backend.model.CompanyDto
 import ru.hse.legaltech.backend.model.NewRequestDto
 import ru.hse.legaltech.backend.model.UpdateRequestDto
 import ru.hse.legaltech.backend.repository.CompanyRepository
+import kotlin.math.log
 
 @Service
 class CompanyService(
@@ -78,6 +79,8 @@ class CompanyService(
                 "Company with id ${updateRequestDto.companyId} not found"
             )
         }
+
+
 
         val notNullCompany = company.get()
 

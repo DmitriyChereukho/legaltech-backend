@@ -10,7 +10,6 @@ import ru.hse.legaltech.backend.model.NewRequestDto
 import ru.hse.legaltech.backend.model.RequestDto
 import ru.hse.legaltech.backend.model.UpdateForRequestDto
 import ru.hse.legaltech.backend.model.UpdateRequestDto
-import ru.hse.legaltech.backend.repository.CompanyRepository
 import ru.hse.legaltech.backend.repository.RequestRepository
 import java.time.LocalDateTime
 
